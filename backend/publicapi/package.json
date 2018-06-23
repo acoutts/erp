@@ -22,5 +22,16 @@
   "bugs": {
     "url": "https://github.com/acoutts/erp/issues"
   },
-  "homepage": "https://github.com/acoutts/erp#readme"
+  "homepage": "https://github.com/acoutts/erp#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-rate-limit": "^2.11.0",
+    "helmet": "^3.12.1",
+    "morgan": "^1.9.0",
+    "request": "^2.87.0"
+  }
 }

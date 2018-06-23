@@ -44,37 +44,21 @@ module.exports = {
     //~ Use daily candles for now until we have a lot more data to return
     //~ db.build_alldata_candles(day)......
     if (days == 'all')
-      granularity = INTERVALS.WEEK;
+      granularity = intervals.WEEK;
 
     //~ The 'start time' to be passed into the query for BETWEEN
     var timeFrom = moment().utc().subtract(days, 'day').format('YYYY-MM-DD HH:mm:ss.SSS');
     var timeNow = moment().utc().format('YYYY-MM-DD HH:mm:ss.SSS');
 
-
-    switch (granularity) {
-      case intervals.MINUTE:
-        db.build_candles(granularity, timeFrom, timeNow).then(results => {
-          res.status(200).send(results);
-        })
-        break;
-
-      case intervals.HOUR:
-        db.build_candles(granularity, timeFrom, timeNow).then(results => {
-          res.status(200).send(results);
-        })
-        break;
-
-        case intervals.DAY:
-          db.build_candles(granularity, timeFrom, timeNow).then(results => {
-            res.status(200).send(results);
-          })
-        break;
-
-        case intervals.WEEK:
-          db.build_candles(granularity, timeFrom, timeNow).then(results => {
-            res.status(200).send(results);
-          })
-        break;
+    if (days == 'all') {
+      db.build_alldata_candles(granularity).then(results => {
+        res.status(200).send(results);
+      })
+    }
+    else {
+      db.build_candles(granularity, timeFrom, timeNow).then(results => {
+        res.status(200).send(results);
+      })
     }
   },
 
@@ -100,7 +84,8 @@ module.exports = {
               'pusd': priceInUsd
             },
             'metadata': {
-              'status': 'failed',
+              'type': 'POST',
+              'status': 'failed'
             }
           }
         );
@@ -114,7 +99,8 @@ module.exports = {
               'pusd': priceInUsd
             },
             'metadata': {
-              'status': 'success',
+              'type': 'POST',
+              'status': 'success'
             }
           }
         );
