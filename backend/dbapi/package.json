@@ -1,7 +1,7 @@
 {
-  "name": "eosrp-backend-api",
-  "version": "0.1.0",
-  "description": "A backend API for the EOS Resource Planner that is used to query and display charting data to the frontend",
+  "name": "eosrp-dbapi",
+  "version": "0.2.1",
+  "description": "A backend API for the EOS Resource Planner that is used to query price data and return it in JSON format",
   "main": "server.js",
   "scripts": {
     "start:dev": "nodemon server.js",
@@ -29,6 +29,8 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "express-rate-limit": "^2.11.0",
+    "helmet": "^3.12.1",
     "massive": "^5.0.0",
     "moment": "^2.22.2",
     "morgan": "^1.9.0"

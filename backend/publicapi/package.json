@@ -1,0 +1,26 @@
+{
+  "name": "eosrp-publicapi",
+  "version": "0.0.1",
+  "description": "A public frontend API to request resource price information from the backend eosrp-dbapi",
+  "main": "server.js",
+  "scripts": {
+    "start:dev": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acoutts/erp.git"
+  },
+  "keywords": [
+    "eosio",
+    "eos",
+    "backend",
+    "eosrp"
+  ],
+  "author": "Andrew Coutts",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acoutts/erp/issues"
+  },
+  "homepage": "https://github.com/acoutts/erp#readme"
+}
