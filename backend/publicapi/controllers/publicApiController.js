@@ -7,7 +7,6 @@ const config = require('../conf/config')[env];
 var app = require('../server');
 const request = require('request');
 const dbapiurl = 'http://' + config.dbapi.host + ':' + config.dbapi.port;
-console.log(dbapiurl);
 
 module.exports = {
 
