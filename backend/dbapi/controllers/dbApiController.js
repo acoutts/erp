@@ -30,7 +30,7 @@ module.exports = {
     var timeFrom = moment().utc().subtract(reqDayRange, 'day').format('YYYY-MM-DD HH:mm:ss.SSS');
     var timeNow = moment().utc().format('YYYY-MM-DD HH:mm:ss.SSS');
 
-    var granularity = "";
+    var granularity;
 
     switch (reqMinuteInterval) {
       //~ 4 hour
