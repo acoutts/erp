@@ -4,8 +4,8 @@
   "description": "A public frontend API to request resource price information from the backend eosrp-dbapi",
   "main": "server.js",
   "scripts": {
-    "start:dev": "nodemon server.js",
-    "start:prod": "NODE_ENV=production nodemon server.js"
+    "start:dev": "NODE_ENV=development nodemon server.js",
+    "start:prod": "NODE_ENV=production node server.js"
   },
   "repository": {
     "type": "git",

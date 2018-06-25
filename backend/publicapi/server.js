@@ -1,5 +1,6 @@
 //~ Import configurations
-var config = require('./conf/config');
+const env = process.env.NODE_ENV || 'development';
+const config = require('./conf/config')[env];
 
 //~ Setup server
 const express = require('express');

@@ -85,7 +85,7 @@
             .attr("x", width - 5)
             .attr("y", 15);
 
-    d3.json("http://localhost:8001/v1/ram/30", function(error, data) {
+    d3.json("http://localhost:8079/v1/ram/30", function(error, data) {
         var accessor = candlestick.accessor();
 
         data = data.slice(0, 2000000000).map(function(d) {

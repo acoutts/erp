@@ -1,12 +1,26 @@
 var config = {
-  //~ Server details
-  dbapi: {
-    host: '127.0.0.1',
-    port: '7000'
+  development: {
+    //~ Location of the DB API instance
+    dbapi: {
+      host: '127.0.0.1',
+      port: '6999'
+    },
+    //~ Local server settings
+    server: {
+      host: '127.0.0.1',
+      port: '8079'
+    }
   },
-  server: {
-    host: '127.0.0.1',
-    port: '8001'
+  production: {
+    //~ Location of the DB API instance
+    dbapi: {
+      host: '127.0.0.1',
+      port: '7000'
+    },
+    //~ Local server settings
+    server: {
+      port: '8080'
+    }
   }
 };
 module.exports = config;

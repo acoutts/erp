@@ -1,5 +1,6 @@
 //~ Import configurations
-var config = require('./conf/config.my');
+const env = process.env.NODE_ENV || 'development';
+const config = require('./conf/config')[env];
 
 //~ Setup server
 const express = require('express');
@@ -15,7 +16,6 @@ const limiter = new rateLimit({
   delayMs: 0, //~ Full speed until max limit is reached
   message: 'Error: too many requests. Please try again later.'
 })
-
 
 //~ Connect to the DB
 massive({

@@ -1,7 +1,8 @@
 'use strict';
 
 //~ Import configurations
-var config = require('../conf/config');
+const env = process.env.NODE_ENV || 'development';
+const config = require('../conf/config')[env];
 
 var app = require('../server');
 const request = require('request');

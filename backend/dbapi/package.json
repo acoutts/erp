@@ -4,8 +4,8 @@
   "description": "A backend API for the EOS Resource Planner that is used to query price data and return it in JSON format",
   "main": "server.js",
   "scripts": {
-    "start:dev": "nodemon server.js",
-    "start:prod": "NODE_ENV=production nodemon server.js"
+    "start:dev": "NODE_ENV=development nodemon server.js",
+    "start:prod": "NODE_ENV=production node server.js"
   },
   "repository": {
     "type": "git",
