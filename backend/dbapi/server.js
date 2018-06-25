@@ -52,8 +52,12 @@ massive({
   //~ Routing endpoints
   app.route('/v1/data/:days')
   .get(dbApiController.getData);
+
   app.route('/v1/data')
   .post(dbApiController.postData);
+
+  app.route('/v1/data/custom/:reqDayRange/:reqIntervalMinutes')
+  .get(dbApiController.getDataCustom);
 
   //~ Generic 404 error for invalid URIs
   app.get('*', function(req, res) {

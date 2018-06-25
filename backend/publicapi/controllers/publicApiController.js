@@ -10,11 +10,21 @@ const dbapiurl = 'http://' + config.dbapi.host + ':' + config.dbapi.port;
 
 module.exports = {
 
+  //~ Custom resolution data
+  getRamCustom: function(req, res) {
+    const reqDayRange = req.params.reqDayRange;
+    const reqMinuteInterval = req.params.reqIntervalMinutes;
+    request(dbapiurl + '/v1/data/custom/' + reqDayRange + '/' + reqMinuteInterval, { json: true }, (err, resi, body) => {
+      if (err) { return console.log(err); }
+      res.status(resi.statusCode).send(body);
+    })
+  },
+
   //~ 1 day resolution
   getRam1d: function(req, res) {
     request(dbapiurl + '/v1/data/1', { json: true }, (err, resi, body) => {
       if (err) { return console.log(err); }
-      res.status(200).send(body);
+      res.status(resi.statusCode).send(body);
     })
   },
 
@@ -22,7 +32,7 @@ module.exports = {
   getRam3d: function(req, res) {
     request(dbapiurl + '/v1/data/3', { json: true }, (err, resi, body) => {
       if (err) { return console.log(err); }
-      res.status(200).send(body);
+      res.status(resi.statusCode).send(body);
     })
   },
 
@@ -30,7 +40,7 @@ module.exports = {
   getRam7d: function(req, res) {
     request(dbapiurl + '/v1/data/7', { json: true }, (err, resi, body) => {
       if (err) { return console.log(err); }
-      res.status(200).send(body);
+      res.status(resi.statusCode).send(body);
     })
   },
 
@@ -38,7 +48,7 @@ module.exports = {
   getRam14d: function(req, res) {
     request(dbapiurl + '/v1/data/14', { json: true }, (err, resi, body) => {
       if (err) { return console.log(err); }
-      res.status(200).send(body);
+      res.status(resi.statusCode).send(body);
     })
   },
 
@@ -46,7 +56,7 @@ module.exports = {
   getRam30d: function(req, res) {
     request(dbapiurl + '/v1/data/30', { json: true }, (err, resi, body) => {
       if (err) { return console.log(err); }
-      res.status(200).send(body);
+      res.status(resi.statusCode).send(body);
     })
   },
 
@@ -54,7 +64,7 @@ module.exports = {
   getRam90d: function(req, res) {
     request(dbapiurl + '/v1/data/90', { json: true }, (err, resi, body) => {
       if (err) { return console.log(err); }
-      res.status(200).send(body);
+      res.status(resi.statusCode).send(body);
     })
   },
 
@@ -62,7 +72,7 @@ module.exports = {
   getRam180d: function(req, res) {
     request(dbapiurl + '/v1/data/180', { json: true }, (err, resi, body) => {
       if (err) { return console.log(err); }
-      res.status(200).send(body);
+      res.status(resi.statusCode).send(body);
     })
   },
 
@@ -70,7 +80,7 @@ module.exports = {
   getRam365d: function(req, res) {
     request(dbapiurl + '/v1/data/365', { json: true }, (err, resi, body) => {
       if (err) { return console.log(err); }
-      res.status(200).send(body);
+      res.status(resi.statusCode).send(body);
     })
   },
 
@@ -78,7 +88,7 @@ module.exports = {
   getRamAll: function(req, res) {
     request(dbapiurl + '/v1/data/all', { json: true }, (err, resi, body) => {
       if (err) { return console.log(err); }
-      res.status(200).send(body);
+      res.status(resi.statusCode).send(body);
     })
   }
 }

@@ -53,6 +53,9 @@ app.get('/v1/ram/180', publicApiController.getRam180d); //~ last 6 mo of data
 app.get('/v1/ram/365', publicApiController.getRam365d); //~ Last 1 year of data
 app.get('/v1/ram/all', publicApiController.getRamAll); //~ Return daily resolution for all datapoints
 
+//~ Custom intervals for advanced use only
+app.get('/v1/ram/custom/:reqDayRange/:reqIntervalMinutes', publicApiController.getRamCustom);
+
 //~ Generic 404 error for invalid URIs
 app.get('*', function(req, res) {
   res.status(404).send({url: req.originalUrl + ' not found'})

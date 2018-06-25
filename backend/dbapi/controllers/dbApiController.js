@@ -23,6 +23,46 @@ const intervals = {
 
 module.exports = {
 
+  getDataCustom: function(req, res) {
+    const reqDayRange = req.params.reqDayRange;
+    const reqMinuteInterval = req.params.reqIntervalMinutes;
+
+    var timeFrom = moment().utc().subtract(reqDayRange, 'day').format('YYYY-MM-DD HH:mm:ss.SSS');
+    var timeNow = moment().utc().format('YYYY-MM-DD HH:mm:ss.SSS');
+
+    var granularity = "";
+
+    switch (reqMinuteInterval) {
+      //~ 4 hour
+      case "240":
+        db.build_4h_candles(timeFrom, timeNow).then(results => {
+          res.status(200).send(results);
+        })
+      break;
+
+      //~ 1 day
+      case "1440":
+        granularity = intervals.DAY;
+        db.build_candles(granularity, timeFrom, timeNow).then(results => {
+          res.status(200).send(results);
+        })
+      break;
+
+      //~ 1 week
+      case "10080":
+        granularity = intervals.WEEK;
+        db.build_candles(granularity, timeFrom, timeNow).then(results => {
+          res.status(200).send(results);
+        })
+      break;
+
+      //~ Throw an error back if anything but 4h or 1d is passed in for the interval
+      default:
+        res.status(400).send("Error");
+        break;
+    }
+  },
+
   //~ 'period' parameter specifies what range of data to return
   getData: function (req, res) {
     const getAllData = false;

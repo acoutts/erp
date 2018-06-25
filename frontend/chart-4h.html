@@ -77,8 +77,9 @@
             .attr("class", "coords")
             .attr("x", width - 5)
             .attr("y", 15);
-    d3.json("http://35.165.169.215/v1/ram/30", function(error, data) {
+    //d3.json("http://35.165.169.215/v1/ram/1", function(error, data) {
     //d3.json("http://localhost:8079/v1/ram/31", function(error, data) {
+    d3.json("http://35.165.169.215/v1/ram/custom/30/240", function(error, data) {
         var accessor = candlestick.accessor();
 
         data = data.slice(0, 2000000000).map(function(d) {
