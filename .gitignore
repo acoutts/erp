@@ -1,5 +1,3 @@
 .DS_Store
 build/
 node_modules/
-backend/dbapi/conf/config.js
-backend/publicapi/conf/config.js
