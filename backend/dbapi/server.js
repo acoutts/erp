@@ -50,13 +50,13 @@ massive({
   });
 
   //~ Routing endpoints
-  app.route('/v1/data/:days')
+  app.route('/v1/ram/:days')
   .get(dbApiController.getData);
 
-  app.route('/v1/data')
+  app.route('/v1/ram')
   .post(dbApiController.postData);
 
-  app.route('/v1/data/custom/:reqDayRange/:reqIntervalMinutes')
+  app.route('/v1/ram/custom/:reqDayRange/:reqIntervalMinutes')
   .get(dbApiController.getDataCustom);
 
   //~ Generic 404 error for invalid URIs

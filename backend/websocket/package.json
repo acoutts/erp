@@ -1,0 +1,34 @@
+{
+  "name": "websocket",
+  "version": "0.0.1",
+  "description": "Websocket backend to provide real-time information to the EOSRP frontend",
+  "main": "server.js",
+  "scripts": {
+    "start:dev": "NODE_ENV=development nodemon server.js",
+    "start:prod": "NODE_ENV=production node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acoutts/erp.git"
+  },
+  "keywords": [
+    "eosio",
+    "erp",
+    "eos",
+    "websocket",
+    "backend"
+  ],
+  "author": "Andrew Coutts",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acoutts/erp/issues"
+  },
+  "homepage": "https://github.com/acoutts/erp#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
