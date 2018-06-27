@@ -7,6 +7,8 @@ const request = require('request');
 //~ Serve files in /public/ folder
 app.use(express.static('public'));
 
+
+var oldPrice;
 //~ Realtime update handler for RAM price
 setInterval(() => {
   //~ Update EOS USD Price
@@ -32,7 +34,11 @@ setInterval(() => {
 
       ramPriceEos = ((ramQuoteBalance / ramBaseBalance) * 1024).toFixed(8); // Price in kb
       ramPriceUsd = ramPriceEos * eosPriceUsd;
-      io.emit('update', ramPriceEos);
+
+      if (oldPrice != ramPriceEos) {
+        io.emit('update', ramPriceEos);
+        oldPrice = ramPriceEos;
+      }
       //console.log("ramPriceEos: " + ramPriceEos);
       //console.log("ramPriceUsd: " + ramPriceUsd);
     });
