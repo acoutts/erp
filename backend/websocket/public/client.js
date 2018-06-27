@@ -1,7 +1,7 @@
 var socket = io.connect('http://localhost:8014');
 
 socket.on('message', function(message) {
-  console.log('The server has a message for you: ' + message);
+  console.log(message);
 })
 
 socket.on('connect', (socket) => {
@@ -51,7 +51,7 @@ function priceDeltaHandler(_oldVal, _newVal) {
   }, 700)
 }
 
-socket.on('update', (message) => {
+socket.on('updateRam', (message) => {
   var oldVal = document.getElementById("eosPriceRam").innerHTML.substr(0, document.getElementById("eosPriceRam").innerHTML.indexOf(' '));
   priceDeltaHandler(oldVal, message);
   var target = document.getElementById("eosPriceRam");

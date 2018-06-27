@@ -10,6 +10,7 @@ app.use(express.static('public'));
 var oldPrice;
 var ramPriceEos;
 
+//~ Main loop to check for changes in the price
 function updatePrice () {
   //~ Update EOS USD Price first
   request('https://api.coinmarketcap.com/v2/ticker/1765/', { json: true }, (err, res, body) => {
@@ -32,34 +33,28 @@ function updatePrice () {
       ramPriceUsd = ramPriceEos * eosPriceUsd;
 
       if (oldPrice != ramPriceEos) {
-        io.emit('update', ramPriceEos);
+        io.emit('updateRam', ramPriceEos);
         oldPrice = ramPriceEos;
       }
     });
   });
 }
 
-setInterval(() => {
-  updatePrice();
-}, 500);
-
 http.listen(8014, function() {
   console.log('listening on port 8014');
 
+  //~ Update prices on interval
+  setInterval(() => {
+    updatePrice();
+  }, 500);
+
   // When a client connects, we note it in the console
-  io.sockets.on('connection', function (socket) {
-    //~ Send current price to the cient that just connected
-    socket.emit('update', ramPriceEos);
-    socket.emit('message', "You are connected!");
-    socket.broadcast.emit('message', "Another client has just connected");
+  io.on('connection', function (socket) {
+    console.log(socket.id);
+    //~ Send current price to the cient that just connected to setup their page data
+    socket.emit('updateRam', ramPriceEos);
 
-
-    socket.on('message', function (message) {
-      console.log(socket.username + ' is speaking to me! They\'re saying: ' + message);
-    })
-
-    socket.on('little_newbie', function(username) {
-      socket.username = username;
-    })
-  });
+    //~ Send a log to the client
+    socket.emit('message', "Socket connected successfully");
+  })
 });
