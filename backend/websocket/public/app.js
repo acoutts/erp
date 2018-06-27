@@ -1,12 +1,44 @@
 var socket = io.connect('http://localhost:8014');
 
-//var username = prompt("What's your username?");
-
-//socket.emit('little_newbie', username);
-
 socket.on('message', function(message) {
   console.log('The server has a message for you: ' + message);
 })
+
+socket.on('connect', (socket) => {
+  document.getElementById("connectionStatus").innerHTML = "Connected";
+});
+
+socket.on('disconnect', (socket) => {
+  document.getElementById("connectionStatus").innerHTML = "Disconnected";
+});
+
+socket.on('connect_error', (socket) => {
+  document.getElementById("connectionStatus").innerHTML = "Connection Error";
+});
+
+socket.on('connect_timeout', (socket) => {
+  document.getElementById("connectionStatus").innerHTML = "Connection Timeout";
+});
+
+socket.on('reconnect', (socket) => {
+
+});
+
+socket.on('reconnect_attempt', (socket) => {
+
+});
+
+socket.on('reconnecting', (socket) => {
+
+});
+
+socket.on('reconnect_error', (socket) => {
+
+});
+
+socket.on('reconnect_failed', (socket) => {
+
+});
 
 function priceDeltaHandler(_oldVal, _newVal) {
   var cls;
@@ -24,9 +56,8 @@ socket.on('update', (message) => {
   priceDeltaHandler(oldVal, message);
   var target = document.getElementById("eosPriceRam");
   target.innerHTML = message + " EOS";
-  //~ console.log('Updated RAM Price: ' + message);
-})
+});
 
 $('#poke').click(function () {
     socket.emit('message', 'Hi server, how are you?');
-})
+});
